@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Generator</title>
+    <link rel="stylesheet" href="../static/style.css">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Learn with MCQs</h1>
+        <input type="text" id="topic" placeholder="Enter a topic to learn">
+        <button onclick="fetchMCQs()">Get MCQs</button>
+        <div class="loader" id="loader"></div>
+
+        <div id="mcq-container"></div>
+    </div>
+
+    <script src="../static/script.js"></script>
+</body>
+</html>
