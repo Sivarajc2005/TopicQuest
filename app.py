@@ -1,17 +1,19 @@
 from flask import Flask, render_template, request, jsonify
 import requests
 import json
+import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
-
+load_dotenv()
 # Configure Google Gemini API
-API_KEY = "-- YOUR API KEY --------"  # Replace with your actual API key
+API_KEY = os.getenv("gemini_api") # Replace with your actual API key
 API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
 
 
 def get_mcq(topic):
     """Fetch MCQs using Gemini 2 Flash API."""
-    prompt = f"Generate 10 multiple-choice questions on {topic}. Format: JSON array of objects with 'question', 'options', 'answer'."
+    prompt = f"Generate 10 multiple-choice questions on {topic} whre it is need to be unique from previous question . Format: JSON array of objects with 'question', 'options', 'answer'."
 
     headers = {"Content-Type": "application/json"}
     data = {"contents": [{"parts": [{"text": prompt}]}]}
